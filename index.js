@@ -33,7 +33,7 @@ app.get("/api/:date?", function (req, res) {
   } else if (/^\d+$/.test(req.params.date)) {
     let date = new Date(Number(req.params.date));
     if (!dateIsValid(date)) res.json({ error: "Invalid Date" });
-    else res.json({ unix: req.params.date, utc: date.toUTCString() });
+    else res.json({ unix: Number(req.params.date), utc: date.toUTCString() });
     // Other date format
   } else if (req.params.date !== "") {
     let date = new Date(req.params.date);
